@@ -34,15 +34,17 @@ let class_specification2="MSM1fd";
 
       //-----------------------------------------------helping functions-------------------------------------------------------------------------------------
 
-      function div_mouseover_event(div) {
-          div.style.background="green";
-      }
-
-      function div_mouseleave_event(div) {
-          div.style.background=null;
-      }
-
       function prepare_div(pic_div) {
+        let prepared_fragezeichen = pic_div.getAttribute("data-prepared");
+        console.log(prepared_fragezeichen);
+        if( prepared_fragezeichen==="false" || prepared_fragezeichen===undefined || prepared_fragezeichen===null) { //wenn div noch nicht prepared
+          let button = document.createElement("BUTTON");
+          button.style.position = "absolute";
+          button.style.left=0;
+          button.style.top=0;
+          button.style.width="25px";
+          button.style.height="25px";
+          pic_div.appendChild(button);
 
           pic_div.addEventListener("mouseenter", function() {
               div_mouseover_event(pic_div);
@@ -51,7 +53,19 @@ let class_specification2="MSM1fd";
           pic_div.addEventListener("mouseleave", function() {
             div_mouseleave_event(pic_div);
       });
+      let attribute = document.createAttribute("data-prepared"); //div als prepared markiert
+      attribute.value = "true";
+      pic_div.setAttributeNode(attribute);
     }
+  }
+
+      function div_mouseover_event(div) {
+          //div.style.background="green";
+      }
+
+      function div_mouseleave_event(div) {
+          //div.style.background=null;
+      }
 
       function get_image_div() {
           let image_div = document.getElementById("islrg");
