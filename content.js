@@ -11,7 +11,6 @@ let class_specification2="MSM1fd";
           }
         }
 
-
       MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
       var observer = new MutationObserver(function(mutations, observer) {
           // fired when a mutation occurs
@@ -35,28 +34,31 @@ let class_specification2="MSM1fd";
       //-----------------------------------------------helping functions-------------------------------------------------------------------------------------
 
       function prepare_div(pic_div) {
-        let prepared_fragezeichen = pic_div.getAttribute("data-prepared");
+              let prepared_fragezeichen = pic_div.getAttribute("data-prepared");
 
-        if( prepared_fragezeichen==="false" || prepared_fragezeichen===undefined || prepared_fragezeichen===null) { //wenn div noch nicht prepared
-          let button = document.createElement("BUTTON");
-          button.style.position = "absolute";
-          button.style.left=0;
-          button.style.top=0;
-          button.style.width="25px";
-          button.style.height="25px";
-          button.style.display="none";
-          pic_div.appendChild(button);
+              if( prepared_fragezeichen==="false" || prepared_fragezeichen===undefined || prepared_fragezeichen===null) { //wenn div noch nicht prepared
+                let button = document.createElement("BUTTON");
+                button.style.position = "absolute";
+                button.style.left=0;
+                button.style.top=0;
+                button.style.width="25px";
+                button.style.height="25px";
+                button.style.display="none";
+                button.addEventListener("click", function() {
+                  get_clipboard_content(pic_div);
+                });
+                pic_div.appendChild(button);
 
-          pic_div.addEventListener("mouseenter", function() {
-              div_mouseover_event(pic_div);
-          });
+                pic_div.addEventListener("mouseenter", function() {
+                    div_mouseover_event(pic_div);
+                });
 
-          pic_div.addEventListener("mouseleave", function() {
-            div_mouseleave_event(pic_div);
-      });
-          let attribute = document.createAttribute("data-prepared"); //div als prepared markiert
-          attribute.value = "true";
-          pic_div.setAttributeNode(attribute);
+                pic_div.addEventListener("mouseleave", function() {
+                  div_mouseleave_event(pic_div);
+            });
+                let attribute = document.createAttribute("data-prepared"); //div als prepared markiert
+                attribute.value = "true";
+                pic_div.setAttributeNode(attribute);
     }
   }
 
@@ -72,6 +74,22 @@ let class_specification2="MSM1fd";
         for (i of btns) {
           i.style.display="none";
         }
+      }
+
+      function get_clipboard_content(div) {
+          a_with_href_of_image = div.getElementsByTagName("a")[1];
+          src = a_with_href_of_image.getAttribute("href");
+
+          today = new Date();
+            day = today.getDate();
+            month = parseInt(today.getMonth(), 10) + 1;
+            year = today.getFullYear();
+            date_string = day + ". " + month + ". " + year;
+
+            hours = today.getHours();
+            minutes = today.getMinutes();
+            time_string = hours + ":" + minutes;
+          return "(" + src + " / "+ date_string + " " + time_string + ")";
       }
 
       function get_image_div() {
