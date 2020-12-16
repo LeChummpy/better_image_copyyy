@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(function(msg) {
   }
 });
 
-document.addEventListener("dragend", function(event){
+document.addEventListener("dragstart", function(event){
   let dragged_element = event.target;
   if (dragged_element.nodeName==="IMG") {
     let clipboardcontent = get_clipboard_content_from_HTMLImage(dragged_element);
