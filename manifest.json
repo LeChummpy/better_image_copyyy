@@ -1,8 +1,8 @@
 {
 
-    "description": "Copy drag drop",
+    "description": "Copy drag drop download",
     "manifest_version": 2,
-    "name": "easy_präsi_copy_when_dragged_or_downloaded",
+    "name": "Copy drag drop download",
     "version": "1.0",
     "permissions": [
           "downloads",
