@@ -1,11 +1,12 @@
+let class_specification0="isv-r";
 let class_specification1="PNCib";
 let class_specification2="MSM1fd";
 
-      let image_div = get_image_div();
+      let image_div = document.getElementsByClassName("islrc")[0];
       if ( !(image_div===null) ) {
           let image_div_children = image_div.children;
           for (i of image_div_children) {
-            if (i.classList[1]==class_specification1 && i.classList[2]==class_specification2) {
+            if (i.classList[0]==class_specification0 && i.classList[1]==class_specification1 && i.classList[2]==class_specification2) {
               prepare_div(i);
             }
           }
@@ -15,9 +16,8 @@ let class_specification2="MSM1fd";
       var observer = new MutationObserver(function(mutations, observer) {
           // fired when a mutation occurs
           for (mutation of mutations){
-              if (mutation.target.classList[0]=="isv-r" && mutation.target.classList[1]==class_specification1 && mutation.target.classList[2]==class_specification2) { //bei jedem neu geladenen Bild
-                  let pics_div = get_image_div()
-                  let pic_div = pics_div.querySelectorAll('[data-ID="' + mutation.target.dataset.id + '"]')[0]; //alle pic_divs werden ausgewählt (Bild + Beschreibungstext)
+              if (mutation.target.classList[0]==class_specification0 && mutation.target.classList[1]==class_specification1 && mutation.target.classList[2]==class_specification2) { //bei jedem neu geladenen Bild
+                  let pic_div = document.querySelectorAll('[data-ID="' + mutation.target.dataset.id + '"]')[0]; //neu geladenes Div wird ausgewählt, prepariert
                   if ( !(pic_div===undefined) ) {
                       prepare_div(pic_div);
                 }
@@ -44,8 +44,9 @@ let class_specification2="MSM1fd";
                 button.style.width="25px";
                 button.style.height="25px";
                 button.style.display="none";
-                button.addEventListener("click", function() {
-                  get_clipboard_content(pic_div);
+                button.addEventListener("click", function() { //Wenn Button gedrückt wird, dann wird Text ins Clipboard kopiert.
+                  clipboard_content = get_clipboard_content(pic_div);
+                  copy_to_clipboard("plain_text", clipboard_content);
                 });
                 pic_div.appendChild(button);
 
@@ -92,6 +93,16 @@ let class_specification2="MSM1fd";
           return "(" + src + " / "+ date_string + " " + time_string + ")";
       }
 
+      function copy_to_clipboard(method, string) {
+        if (method=="plain_text") {
+          navigator.clipboard.writeText(string);
+        } else if (method=="image+plain_text") {
+          //copy text and image to clipboard
+
+        }
+      }
+
+/*
       function get_image_div() {
           let image_div = document.getElementById("islrg");
           if (image_div!==null) {
@@ -101,3 +112,4 @@ let class_specification2="MSM1fd";
             return null
           }
       }
+*/
