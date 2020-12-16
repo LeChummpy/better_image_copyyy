@@ -3,7 +3,7 @@ let class_specification1="PNCib";
 let class_specification2="MSM1fd";
 
       let image_div = document.getElementsByClassName("islrc")[0];
-      if ( !(image_div===null) ) {
+      if ( !(image_div===null) && !(image_div===undefined) ) {
           let image_div_children = image_div.children;
           for (i of image_div_children) {
             if (i.classList[0]==class_specification0 && i.classList[1]==class_specification1 && i.classList[2]==class_specification2) {
@@ -38,12 +38,20 @@ let class_specification2="MSM1fd";
 
               if( prepared_fragezeichen==="false" || prepared_fragezeichen===undefined || prepared_fragezeichen===null) { //wenn div noch nicht prepared
                 let button = document.createElement("BUTTON");
-                button.style.position = "absolute";
+                let icon = document.createElement("img");
+                  icon.src=chrome.extension.getURL("rsc/clipboard_icon.png");
+                  icon.style.width="100%";
+                  icon.style.height="90%";
+                  button.appendChild(icon);
+                button.style.position="absolute";
                 button.style.left=0;
                 button.style.top=0;
-                button.style.width="25px";
-                button.style.height="25px";
+                button.style.width="30px";
+                button.style.height="30px";
                 button.style.display="none";
+                //button.innerHTML='<img src="https://freeiconshop.com/wp-content/uploads/edd/clipboard-outline-filled.png"></img>';
+
+
                 button.addEventListener("click", function() { //Wenn Button gedrückt wird, dann wird Text ins Clipboard kopiert.
                   clipboard_content = get_clipboard_content(pic_div);
                   copy_to_clipboard("plain_text", clipboard_content);
@@ -89,7 +97,9 @@ let class_specification2="MSM1fd";
 
             hours = today.getHours();
             minutes = today.getMinutes();
-            time_string = hours + ":" + minutes;
+            if (minutes<10) time_string = hours + ":" + "0" +  minutes;
+            else time_string = hours + ":" + minutes;
+
           return "(" + src + " / "+ date_string + " " + time_string + ")";
       }
 
