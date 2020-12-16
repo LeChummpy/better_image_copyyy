@@ -1,8 +1,8 @@
 {
 
-    "description": "Easier image copy paste powerpoint.",
+    "description": "Copy wenn Bild gedragged oder gedownloaded.",
     "manifest_version": 2,
-    "name": "image_from_web_the_easy_way",
+    "name": "easy_präsi_copy_when_dragged_or_downloaded",
     "version": "1.0",
     "permissions": [
           "downloads",
