@@ -1,6 +1,6 @@
 {
 
-    "description": "Copy wenn Bild gedragged oder gedownloaded.",
+    "description": "Copy drag drop",
     "manifest_version": 2,
     "name": "easy_präsi_copy_when_dragged_or_downloaded",
     "version": "1.0",
