@@ -128,11 +128,15 @@ function prepare_a(pic_a) {
           button.style.bottom=0;
           button.style.width="25px";
           button.style.height="25px";
-          button.style.display="none";
-          //button.innerHTML='<img src="https://freeiconshop.com/wp-content/uploads/edd/clipboard-outline-filled.png"></img>';
+          button.style.display="block";
 
 
-          button.addEventListener("click", function(e) { //Wenn Button gedrückt wird, dann wird Text ins Clipboard kopiert.
+          button.addEventListener("click", function(event) { //Wenn Button gedrückt wird, dann wird Text ins Clipboard kopiert.
+            event.stopPropagation();
+            event.preventDefault();
+            event.cancelBubble = true;
+            event.stopImmediatePropagation();
+
             clipboardcontent = get_clipboard_content_from_a(pic_a);
             console.log(clipboardcontent);
             copy_to_clipboard(clipboardcontent);
