@@ -128,7 +128,7 @@ function prepare_a(pic_a) {
           button.style.bottom=0;
           button.style.width="25px";
           button.style.height="25px";
-          button.style.display="block";
+          button.style.display="none";
 
 
           button.addEventListener("click", function(event) { //Wenn Button gedrückt wird, dann wird Text ins Clipboard kopiert.
