@@ -1,6 +1,7 @@
 # better_image_copyyy
 Installation (bisher nur für Chrome):
 
+0. Auf "Code" klicken.
 1. Chrome-Extension (.zip) herunterladen, entpacken.
 2. Entpackten Ordner in beliebigem Ordner ablegen (permanentes Verzeichnis der Extension!!!).
 2. URL chrome://extensions/ öffnen.
