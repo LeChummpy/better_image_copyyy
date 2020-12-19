@@ -20,7 +20,6 @@ document.addEventListener("dragstart", function(event){
   let dragged_element = event.target;
   if (dragged_element.nodeName==="IMG") {
     let clipboardcontent = get_clipboard_content_from_HTMLImage(dragged_element);
-    j.appendChild(document.createElement("BUTTON"));
     copy_to_clipboard(clipboardcontent);
   }
 });
@@ -104,8 +103,8 @@ function prepare_img(img) {
 
           let button = document.createElement("BUTTON");
             button.style.position="absolute";
-            button.style.left=0;
-            button.style.top=0;
+            button.style.right=0;
+            button.style.bottom=0;
             button.style.width="25px";
             button.style.height="25px";
             button.style.display="none";
@@ -114,6 +113,9 @@ function prepare_img(img) {
               event.preventDefault();
               event.cancelBubble = true;
               event.stopImmediatePropagation();
+
+              clipboardcontent = get_clipboard_content_from_HTMLImage(img);
+              copy_to_clipboard(clipboardcontent);
 
           });
           wrapper.appendChild(button);
