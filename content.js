@@ -96,18 +96,25 @@ function prepare_img(img) {
           let parent_node = img.parentNode;
           let wrapper = document.createElement("div");
           let attr = document.createAttribute("class");
-          attr.value="added_afterwards"
+          attr.value="wrapper"
           wrapper.setAttributeNode(attr);
           parent_node.replaceChild(wrapper, img);
           wrapper.appendChild(img);
 
+          wrapper.parentNode.parentNode.style.display="inline-block";
+          //wrapper.parentNode.style.margin="0px 0px 0px 0px";
+          wrapper.parentNode.style.display="inline-block";
+          wrapper.style.display="inline-block";
+          img.style.alignContent="center";
           let button = document.createElement("BUTTON");
+            button.innerHTML="Copy";
             button.style.position="absolute";
-            button.style.right=0;
-            button.style.bottom=0;
-            button.style.width="25px";
-            button.style.height="25px";
+            button.style.right="50%";
+            button.style.top="2%";
+            button.style.width="50px";
+            button.style.height="20px";
             button.style.display="none";
+            button.style.transform="translate(+50%, +50%)";
             button.addEventListener("click", function(event) { //Wenn Button gedrückt wird, dann wird Text ins Clipboard kopiert.
               event.stopPropagation();
               event.preventDefault();
