@@ -5,6 +5,6 @@ Installation (bisher nur für Chrome):
 2. Entpackten Ordner in beliebigem Ordner ablegen (permanentes Verzeichnis der Extension!!!).
 2. URL chrome://extensions/ öffnen.
 3. Developermodus (oben rechts) anschalten.
-4. "Entpackte Erweiterung laden" anklicken (oben links)
-5. Entpackten Ordner wählen
-6. fertig!
+4. "Entpackte Erweiterung laden" anklicken (oben links).
+5. Entpackte Extension auswählen.
+6. Fertig!
